@@ -54,15 +54,25 @@ describe Calculation do
     end
   end
 
-  context "adding numbers" do
+  context "solving" do
     it "adds 1 to 1" do
       calculation = Calculation.new("1 + 1")
       calculation.solve.should == 2
     end
 
+    it "subtracts 1 from 1" do
+      calculation = Calculation.new("1 - 1")
+      calculation.solve.should == 0
+    end
+
     it "adds three ones" do
       calculation = Calculation.new("1 + 1 + 1")
       calculation.solve.should == 3
+    end
+
+    it "solves long expressions of different operations" do
+      calculation = Calculation.new("1 + 1 - 1")
+      calculation.solve.should == 1
     end
   end
 end

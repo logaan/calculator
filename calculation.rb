@@ -61,11 +61,15 @@ class Calculation
 
       case operation
         when "+" then eval(children[0]) + eval(children[1])
+        when "-" then eval(children[0]) - eval(children[1])
+        when "*" then eval(children[0]) * eval(children[1])
+        when "/" then eval(children[0]) / eval(children[1])
         else raise RuntimeError, "Unknown Operation"
       end
     elsif expression =~ /\d+/
       expression.to_i
     else
+      # Should never happen
       raise RuntimeError, "Unknown Expression"
     end
   end
