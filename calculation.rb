@@ -56,14 +56,12 @@ class Calculation
 
   def eval(expression)
     if expression.is_a? Array
-      operation = parse_tree[0]
-      children  = parse_tree[1]
+      operation = expression[0]
+      children  = expression[1]
 
       case operation
-      when "+"
-        eval(children[0]) + eval(children[1])
-      else
-        raise RuntimeError, "Unknown Operation"
+        when "+" then eval(children[0]) + eval(children[1])
+        else raise RuntimeError, "Unknown Operation"
       end
     elsif expression =~ /\d+/
       expression.to_i
