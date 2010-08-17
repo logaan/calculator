@@ -37,6 +37,10 @@ describe Calculation do
       calculation = Calculation.new("1 + 1")
       calculation.parse_tree.should == ["+", ["1", "1"]]
     end
+
+    it "doesn't parse shit" do
+      lambda{ Calculation.new("1 +") }.should raise_exception(RuntimeError, "Fucked Tokens")
+    end
   end
 
   context "adding numbers" do
